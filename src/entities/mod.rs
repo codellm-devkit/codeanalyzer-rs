@@ -1,4 +1,5 @@
 pub mod attr;
+pub mod param;
 pub mod rtype;
 
 #[derive(Debug, Clone, PartialEq)]
