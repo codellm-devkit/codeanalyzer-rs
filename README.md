@@ -75,6 +75,24 @@ Convert Rust binary into a comprehensive system dependency graph.
   -V, --version             Print version information and exit.
 ```
 
+## 2.4. Generating Documentation
+
+To generate and view the documentation for this project:
+
+1. Generate the documentation:
+
+   ```bash
+   cargo doc --no-deps
+   ```
+
+2. Open the generated documentation in your default web browser:
+
+   ```bash
+   cargo doc --no-deps --open
+   ```
+
+The documentation includes detailed API reference, examples, and implementation details of the codeanalyzer library.
+
 ## 3. Installing `codeanalyzer` as a native binary
 
 To install `codeanalyzer`, follow these steps:
