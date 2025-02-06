@@ -1,0 +1,14 @@
+[package]
+name = "codeanalyzer-rs"
+version = "0.1.0"
+edition = "2024"
+authors = ["Rithul Kamesh <hi@rithul.dev>"]
+description = "A code analysis tool written in Rust"
+license = "Apache-2.0"
+repository = "https://github.com/codellm-devkit/codeanalyzer-rs"
+readme = "README.md"
+keywords = ["code-analysis", "static-analysis", "rust"]
+categories = ["development-tools", "development-tools::testing"]
+
+[dependencies]
+clap = { version = "4.5.28", features = ["derive"] }
