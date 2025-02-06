@@ -1,6 +1,6 @@
 ![logo](./docs/assets/logo.png)
 
-Native WALA implementation of source code analysis tool for Enterprise Rust Applications.
+Native implementation of source code analysis tool for Enterprise Rust Applications.
 
 ## 1. Prerequisites
 
