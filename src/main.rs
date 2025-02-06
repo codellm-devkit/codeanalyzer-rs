@@ -7,7 +7,7 @@ use std::path::PathBuf;
 #[derive(Parser)]
 #[command(
     name = "codeanalyzer",
-    about = "Analyze java application.",
+    about = "Analyze rust application.",
     version,
     long_about = None,
 )]
