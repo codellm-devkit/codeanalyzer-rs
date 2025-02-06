@@ -1,4 +1,5 @@
 pub mod attr;
+pub mod gparam;
 pub mod lifetime;
 pub mod param;
 pub mod rtype;
