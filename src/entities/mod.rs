@@ -3,7 +3,7 @@ pub mod callsite;
 pub mod lifetime;
 pub mod param;
 pub mod rtype;
-
+pub mod variables;
 #[derive(Debug, Clone, PartialEq)]
 pub enum RustVisibility {
     Public,
