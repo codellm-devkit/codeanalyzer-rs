@@ -2,8 +2,8 @@
 name = "codeanalyzer-rs"
 version = "0.1.0"
 edition = "2021"
-authors = ["Rithul Kamesh <hi@rithul.dev>"]
-description = "A code analysis tool written in Rust"
+authors = ["Rithul Kamesh <hi@rithul.dev>", "Rahul Krishna <i.m.ralk@gmail.com>"]
+description = "A code analysis tool written in Rust for Rust"
 license = "Apache-2.0"
 repository = "https://github.com/codellm-devkit/codeanalyzer-rs"
 readme = "README.md"
