@@ -50,17 +50,17 @@ jobs:
         run: |
           cd target/release
           # For Linux
-          tar -czf ../../my-app-linux.tar.gz my-app
+          tar -czf ../../codeanalyzer-rs-linux.tar.gz codeanalyzer-rs
           # For Windows (if cross-compilation is set up)
-          # zip ../../my-app-windows.zip my-app.exe
+          # zip ../../codeanalyzer-rs-windows.zip codeanalyzer-rs.exe
           cd ../..
 
       - name: Publish Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            my-app-linux.tar.gz
-            # my-app-windows.zip
+            codeanalyzer-rs-linux.tar.gz
+            # codeanalyzer-rs-windows.zip
           body: ${{ steps.gen_changelog.outputs.changelog }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
