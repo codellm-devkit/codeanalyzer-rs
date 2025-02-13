@@ -142,7 +142,7 @@ Convert Rust binary (*.rlib, *.so) to a dependency graph.
 ## LICENSE
 
 ```LICENSE
-Copyright IBM Corporation 2023, 2024
+Copyright IBM Corporation 2023, 2024, 2025
 
 Licensed under the Apache Public License 2.0, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
