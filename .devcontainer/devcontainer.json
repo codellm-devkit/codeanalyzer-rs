@@ -5,13 +5,16 @@
     "remoteUser": "vscode",
     "workspaceFolder": "/codeanalyzer-rs",
     "workspaceMount": "source=${localWorkspaceFolder},target=/codeanalyzer-rs,type=bind,consistency=delegated",
-    "runArgs": ["-h", "codenet"],
+    "runArgs": [
+        "-h",
+        "codenet"
+    ],
     "customizations": {
         "vscode": {
             "settings": {
                 "markdown-preview-github-styles.colorTheme": "light",
                 "cSpell.words": [
-                    "northstar",
+                    "cldk",
                     "cyclomatic",
                     "stdlibs"
                 ],
