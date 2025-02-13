@@ -1,0 +1,66 @@
+name: Rust Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+
+      - name: Cache dependencies
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build and Test
+        id: build
+        continue-on-error: true  # Allow the workflow to continue if this fails
+        run: |
+          cargo build --release
+          cargo test --release
+
+      - name: Delete tag on failure
+        if: steps.build.outcome != 'success'
+        run: |
+          git push --delete origin ${GITHUB_REF#refs/tags/}
+          exit 1  # Fail the workflow
+
+      - name: Build Changelog
+        id: gen_changelog
+        uses: mikepenz/release-changelog-builder-action@v5
+        with:
+          failOnError: "true"
+          configuration: .github/workflows/release_config.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Package Release Assets
+        run: |
+          cd target/release
+          # For Linux
+          tar -czf ../../my-app-linux.tar.gz my-app
+          # For Windows (if cross-compilation is set up)
+          # zip ../../my-app-windows.zip my-app.exe
+          cd ../..
+
+      - name: Publish Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            my-app-linux.tar.gz
+            # my-app-windows.zip
+          body: ${{ steps.gen_changelog.outputs.changelog }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
