@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use super::rtype::RustType;
 
 /// Represents a location where a function is called.
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, Eq, PartialEq)]
 pub struct CallSite {
     /// The line number where the function is called
     pub line_number: u32,

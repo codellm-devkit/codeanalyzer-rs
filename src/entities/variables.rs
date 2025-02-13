@@ -21,7 +21,7 @@ use crate::entities::{RustVisibility, attr::RustAttribute, rtype::RustType};
 /// assert_eq!(var.name, "my_var");
 /// assert_eq!(var.line_number, 1);
 /// ```
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Eq, PartialEq)]
 pub struct RustVariableDeclaration {
     /// The name of the variable
     pub name: String,

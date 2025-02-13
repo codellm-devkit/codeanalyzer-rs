@@ -4,7 +4,7 @@ use crate::entities::rtype::RustType;
 ///
 /// This struct holds information about a generic parameter, including its name,
 /// trait bounds, default type (if any), and whether it's a const generic.
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct RustGenericParam {
     /// The name of the generic parameter
     pub name: String,
@@ -32,7 +32,7 @@ impl RustGenericParam {
     }
 }
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct RustParameter {
     /// Name of the parameter
     pub name: String,

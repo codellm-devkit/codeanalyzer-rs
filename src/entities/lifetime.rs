@@ -4,7 +4,7 @@ use std::vec::Vec;
 ///
 /// This struct holds information about a lifetime parameter, including its name
 /// and any bounds associated with it.
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct RustLifetimeParam {
     /// The name of the lifetime parameter (e.g., 'a, 'b)
     pub name: String,

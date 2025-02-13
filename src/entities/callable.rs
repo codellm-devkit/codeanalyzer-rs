@@ -10,7 +10,7 @@ use super::{
 };
 
 /// Represents a Rust function or method.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Eq, PartialEq)]
 pub struct RustCallable {
     /// The name of the function or method.
     pub name: String,

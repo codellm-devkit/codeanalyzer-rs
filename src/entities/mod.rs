@@ -3,10 +3,15 @@ pub mod callable;
 pub mod callsite;
 pub mod lifetime;
 pub mod param;
+pub mod renum;
+pub mod rimpl;
+pub mod rmacro;
+pub mod rstruct;
+pub mod rtrait;
 pub mod rtype;
 pub mod safety;
 pub mod variables;
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub enum RustVisibility {
     Public,
     Private,
@@ -27,7 +32,7 @@ impl RustVisibility {
     }
 }
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub enum SafetyClassification {
     Safe,
     Unsafe,
@@ -65,7 +70,7 @@ impl SafetyClassification {
 /// let reason = UnsafeReason::RawPointerDeref;
 /// assert_eq!(reason.as_str(), "raw_pointer_deref");
 /// ```
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub enum UnsafeReason {
     RawPointerDeref,
     MutableStatic,
@@ -110,7 +115,7 @@ impl UnsafeReason {
 /// - `Normal`: A regular struct with named fields.
 /// - `Tuple`: A tuple struct with unnamed fields.
 /// - `Unit`: A unit struct without any fields.
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub enum RustStructKind {
     /// Regular struct with named fields.
     Normal,

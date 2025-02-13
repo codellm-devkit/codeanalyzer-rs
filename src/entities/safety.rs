@@ -4,7 +4,7 @@ use super::{SafetyClassification, UnsafeReason};
 ///
 /// It includes the start and end line numbers, reasons for using unsafe,
 /// an optional explanation, and the name of the containing function (if any).
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct UnsafeBlock {
     /// The starting line number of the unsafe block.
     pub start_line: usize,
@@ -40,7 +40,7 @@ impl UnsafeBlock {
 ///
 /// This structure aggregates various pieces of data related to unsafe operations,
 /// such as unsafe blocks, function calls, raw pointer usages, FFI interactions, and more.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct SafetyAnalysis {
     /// The overall safety classification.
     pub classification: SafetyClassification,
