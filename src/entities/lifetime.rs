@@ -1,10 +1,12 @@
 use std::vec::Vec;
 
+use serde::{Deserialize, Serialize};
+
 /// Represents a lifetime parameter in Rust.
 ///
 /// This struct holds information about a lifetime parameter, including its name
 /// and any bounds associated with it.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct RustLifetimeParam {
     /// The name of the lifetime parameter (e.g., 'a, 'b)
     pub name: String,

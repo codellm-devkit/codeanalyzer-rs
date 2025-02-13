@@ -6,7 +6,7 @@ use super::{
 };
 
 /// Represents a Rust enum.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct RustEnum {
     /// The name of the enum.
     pub name: String,
@@ -39,7 +39,7 @@ pub struct RustEnum {
 }
 
 /// Represents a variant in a Rust enum.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct RustEnumVariant {
     /// The name of the variant.
     pub name: String,

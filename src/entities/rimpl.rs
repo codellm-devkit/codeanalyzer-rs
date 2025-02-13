@@ -5,7 +5,7 @@ use super::{
 };
 
 /// Represents a Rust impl block.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct RustImpl {
     /// The type name that the impl block is for.
     pub type_name: String,

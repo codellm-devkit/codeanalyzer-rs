@@ -2,6 +2,10 @@ use std::fmt;
 
 use serde::{Deserialize, Serialize};
 
+use super::{
+    RustVisibility, attr::RustAttribute, lifetime::RustLifetimeParam, param::RustGenericParam,
+};
+
 /// Represents a Rust type.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, Eq)]
 pub struct RustType {
@@ -54,4 +58,29 @@ impl fmt::Display for RustType {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{}", self.name)
     }
+}
+
+/// Represents a Rust type alias.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, Eq)]
+pub struct RustTypeAlias {
+    /// Name of the type alias.
+    pub name: String,
+    /// Visibility of the type alias.
+    pub visibility: RustVisibility,
+    /// Optional documentation comment.
+    pub doc_comment: Option<String>,
+    /// Attributes associated with the type alias.
+    pub attributes: Vec<RustAttribute>,
+    /// Generic parameters for the type alias.
+    pub generic_params: Vec<RustGenericParam>,
+    /// Lifetime parameters for the type alias.
+    pub lifetime_params: Vec<RustLifetimeParam>,
+    /// Where clauses for the type alias.
+    pub where_clauses: Vec<String>,
+    /// The target type that the alias refers to.
+    pub target_type: RustType,
+    /// Starting line number in the source file.
+    pub start_line: usize,
+    /// Ending line number in the source file.
+    pub end_line: usize,
 }

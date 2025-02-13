@@ -6,7 +6,7 @@ use super::{RustVisibility, attr::RustAttribute};
 /// in Rust source code. It contains the macro's name, visibility,
 /// documentation comment, any attributes associated with it,
 /// its defining rules, and metadata regarding its type and location.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct RustMacro {
     /// The name of the macro.
     pub name: String,

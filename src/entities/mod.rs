@@ -1,8 +1,13 @@
+use serde::{Deserialize, Serialize};
+
 pub mod attr;
 pub mod callable;
 pub mod callsite;
+pub mod dep;
 pub mod lifetime;
+pub mod module;
 pub mod param;
+pub mod rcrate;
 pub mod renum;
 pub mod rimpl;
 pub mod rmacro;
@@ -11,7 +16,7 @@ pub mod rtrait;
 pub mod rtype;
 pub mod safety;
 pub mod variables;
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum RustVisibility {
     Public,
     Private,

@@ -1,10 +1,12 @@
+use serde::{Deserialize, Serialize};
+
 use crate::entities::rtype::RustType;
 
 /// Represents a generic type parameter in Rust.
 ///
 /// This struct holds information about a generic parameter, including its name,
 /// trait bounds, default type (if any), and whether it's a const generic.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct RustGenericParam {
     /// The name of the generic parameter
     pub name: String,
