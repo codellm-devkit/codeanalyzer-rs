@@ -1,4 +1,5 @@
 pub mod attr;
+pub mod callable;
 pub mod callsite;
 pub mod lifetime;
 pub mod param;
@@ -101,4 +102,20 @@ impl UnsafeReason {
             UnsafeReason::Custom(_) => "custom",
         }
     }
+}
+
+/// Represents different kinds of Rust structs.
+///
+/// This enumeration distinguishes between the three forms of structs in Rust:
+/// - `Normal`: A regular struct with named fields.
+/// - `Tuple`: A tuple struct with unnamed fields.
+/// - `Unit`: A unit struct without any fields.
+#[derive(Debug, Clone, PartialEq)]
+pub enum RustStructKind {
+    /// Regular struct with named fields.
+    Normal,
+    /// Tuple struct with unnamed fields.
+    Tuple,
+    /// Unit struct without any fields.
+    Unit,
 }
