@@ -1,53 +1,51 @@
 {
-    "name": "CodeAnalyzer-Rust",
-    "dockerFile": "Dockerfile",
-    "context": "..",
-    "remoteUser": "vscode",
-    "workspaceFolder": "/codeanalyzer-rs",
-    "workspaceMount": "source=${localWorkspaceFolder},target=/codeanalyzer-rs,type=bind,consistency=delegated",
-    "runArgs": [
-        "-h",
-        "codenet"
-    ],
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "markdown-preview-github-styles.colorTheme": "light",
-                "cSpell.words": [
-                    "cldk",
-                    "cyclomatic",
-                    "stdlibs"
-                ],
-                "files.exclude": {
-                    "**/.git": true,
-                    "**/.DS_Store": true
-                },
-                // Rust-specific settings
-                "rust-analyzer.checkOnSave.command": "clippy",
-                "rust-analyzer.inlayHints.enable": true,
-                "rust-analyzer.cargo.allFeatures": true,
-                "editor.formatOnSave": true
-            },
-            "extensions": [
-                // Rust extensions
-                "rust-lang.rust-analyzer",
-                "vadimcn.vscode-lldb",
-                "serayuzgur.crates",
-                "tamasfe.even-better-toml",
-                // Git and general development
-                "donjayamanne.githistory",
-                // Markdown support
-                "bierner.github-markdown-preview",
-                "yzhang.markdown-all-in-one",
-                "hnw.vscode-auto-open-markdown-preview",
-                "davidanson.vscode-markdownlint",
-                "bierner.markdown-preview-github-styles",
-                // Other useful tools
-                "streetsidesoftware.code-spell-checker",
-                "ms-azuretools.vscode-docker"
-            ]
+  "name": "CodeAnalyzer-Rust",
+  "dockerFile": "Dockerfile",
+  "context": "..",
+  "remoteUser": "vscode",
+  "workspaceFolder": "/codeanalyzer-rs",
+  "runArgs": [
+    "--hostname=codenet",
+    "--cap-add=SYS_PTRACE",
+    "--security-opt=seccomp=unconfined",
+    "--security-opt=label=disable", // Disable SELinux for the container
+    "-v",
+    "${localWorkspaceFolder}:/codeanalyzer-rs:Z" // Z flag for SELinux
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "markdown-preview-github-styles.colorTheme": "light",
+        "cSpell.words": ["cldk", "cyclomatic", "stdlibs"],
+        "files.exclude": {
+          "**/.git": true,
+          "**/.DS_Store": true,
+          "**/target": true
+        },
+        "rust-analyzer.checkOnSave.command": "clippy",
+        "rust-analyzer.inlayHints.enable": true,
+        "rust-analyzer.cargo.allFeatures": true,
+        "editor.formatOnSave": true,
+        "[rust]": {
+          "editor.defaultFormatter": "rust-lang.rust-analyzer"
         }
-    },
-    // Install Rust tools and dependencies
-    "postCreateCommand": "cargo build"
+      },
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "vadimcn.vscode-lldb",
+        "fill-labs.dependi",
+        "tamasfe.even-better-toml",
+        "donjayamanne.githistory",
+        "bierner.github-markdown-preview",
+        "yzhang.markdown-all-in-one",
+        "hnw.vscode-auto-open-markdown-preview",
+        "davidanson.vscode-markdownlint",
+        "bierner.markdown-preview-github-styles",
+        "streetsidesoftware.code-spell-checker",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "postCreateCommand": "cargo build",
+  "postStartCommand": "rustup component add rustfmt clippy"
 }
